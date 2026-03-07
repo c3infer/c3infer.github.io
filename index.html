@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>c3infer</title>
+  <style>
+    :root {
+      --bg: #f8f9fb;
+      --paper: #ffffff;
+      --ink: #1d2a44;
+      --muted: #4f5d75;
+      --line: #dfe5f0;
+      --accent: #2457a6;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+    }
+
+    .container {
+      width: min(1040px, 94vw);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      background: var(--paper);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.8rem 0;
+    }
+
+    .brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-logo {
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+      border-radius: 12px;
+      display: block;
+      margin: 0 auto 0.65rem;
+      background: #f3f6fc;
+      border: 1px solid var(--line);
+      padding: 0.35rem;
+    }
+
+    .hero-brand {
+      text-align: center;
+      margin-bottom: 0.2rem;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--accent);
+      border: 1px solid #c9d5ea;
+      border-radius: 999px;
+      padding: 0.32rem 0.75rem;
+      font-size: 0.92rem;
+    }
+
+    .hero {
+      margin-top: 1rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 1.2rem;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 0.8rem;
+      background: #fbfcff;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      line-height: 1.1;
+    }
+
+    h2, h3 {
+      text-align: center;
+      margin: 0.2rem 0 0.8rem;
+      color: var(--ink);
+    }
+
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.35rem; }
+
+    .lead {
+      font-size: 1.06rem;
+      color: #2a3a58;
+      margin: 0.55rem 0;
+    }
+
+    .sponsor {
+      margin: 0.4rem 0 0;
+      font-size: 0.98rem;
+      color: #3c4e73;
+    }
+
+    p, li { color: var(--muted); }
+
+    ul {
+      margin: 0.45rem 0 0;
+      padding-left: 1.1rem;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid var(--line);
+      margin: 1.2rem 0;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .pub p {
+      margin: 0.8rem 0;
+      color: #2f3f60;
+    }
+
+    .note {
+      font-size: 0.93rem;
+      color: #60708f;
+    }
+
+    .team-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.55rem 0.9rem;
+    }
+
+    .team-list li {
+      color: #2f3f60;
+      width: 260px;
+    }
+
+    .team-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: #2f3f60;
+      font-weight: 500;
+    }
+
+    .team-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .member-photo {
+      width: 44px;
+      height: 44px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 1px solid #d3dced;
+      background: #f0f3f8;
+      flex-shrink: 0;
+    }
+
+    .sponsor-footer {
+      text-align: center;
+    }
+
+    .sponsor-footer img {
+      max-width: 220px;
+      width: 100%;
+      height: auto;
+    }
+
+    @media (max-width: 860px) {
+      .row {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#">c3infer</a>
+      <nav class="nav" aria-label="Quick links">
+        <a href="#overview">Overview</a>
+        <a href="#publications">Publications</a>
+        <a href="#code">Code</a>
+        <a href="#team">Team</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="overview">
+      <div class="hero-brand">
+        <img class="brand-logo" src="assets/images/logos/c3infer-logo.png" alt="c3infer logo" />
+      </div>
+      <div class="row">
+        <div>
+          <h2>Compartmentalized, Confidential, and Certified AI Inference </h2>
+          <p class="lead">
+          <strong>c3infer</strong> explores how to build practical confidential systems where confidentiality does not rely only on minimizing TCB size, but on restricting and attesting communication structure between components.</p>
+          <p>The project studies secure multi-component pipelines for TEEs and confidential VMs, including mechanisms for protected inter-CVM memory sharing, policy-controlled communication channels, and deployable implementations on Arm CCA software stacks.</p>
+        </div>
+      </div>
+
+      <hr />
+
+      <section id="publications" class="pub">
+        <h3>Publications</h3>
+        <p><strong><a href="papers/caec.pdf">Confidential, Attestable, and Efficient Inter-CVM Communication with Arm CCA (CAEC)</a></strong>.
+        <em>Sina Abdollahi, Amir Al Sadi, Marios Kogias, David Kotz, Hamed Haddadi</em>.
+        arXiv: <a href="https://arxiv.org/abs/2512.01594v2" target="_blank" rel="noopener noreferrer">2512.01594v2</a>.</p>
+
+        <p><strong><a href="papers/mica.pdf">Sharing is caring: Attestable and Trusted Workflows out of Distrustful Components (Mica)</a></strong>.
+        <em>Amir Al Sadi, Sina Abdollahi, Adrien Ghosn, Hamed Haddadi, Marios Kogias</em>.
+        arXiv: <a href="https://arxiv.org/abs/2603.03403v1" target="_blank" rel="noopener noreferrer">2603.03403v1</a>.</p>
+
+        <p><strong><a href="papers/systex25-vision.pdf">Why I Stopped Caring About the TCB</a></strong>.
+        <em>Adrien Ghosn, Marios Kogias</em>.
+        SysTEX 2025 vision paper.</p>
+      </section>
+
+      <hr />
+
+      <section id="code">
+        <h3>Code Artifacts</h3>
+        <p>
+        C3Infer builds on ARM CCA. It requires minimum changes to the RMM. It also, requires changes to QEMU and the Linux kernel to add support.
+        All code artifacts are available on <a hrer="https://github.com/c3infer/">GitHub</a>.
+        Start from <a href="https://github.com/c3infer/c3infer">c3Infer repository</a> to explore all the available artifacts.
+        </p>
+      </section>
+
+      <hr />
+
+      <section id="team">
+        <h3>Team</h3>
+        <ul class="team-list">
+          <li>
+            <a class="team-link" href="https://alsadiamir.github.io/" target="_blank" rel="noopener noreferrer">
+              <img class="member-photo" src="assets/images/team/amir-al-sadi.jpg" alt="Amir Al Sadi" />
+              <span>Amir Al Sadi</span>
+            </a>
+          </li>
+          <li>
+            <a class="team-link" href="https://profiles.imperial.ac.uk/s.abdollahi22" target="_blank" rel="noopener noreferrer">
+              <img class="member-photo" src="assets/images/team/sina-abdollahi.webp" alt="Sina Abdollahi" />
+              <span>Sina Abdollahi</span>
+            </a>
+          </li>
+          <li>
+            <a class="team-link" href="https://www.microsoft.com/en-us/research/people/adrienghosn/" target="_blank" rel="noopener noreferrer">
+              <img class="member-photo" src="assets/images/team/adrien-ghosn.jpg" alt="Adrien Ghosn" />
+              <span>Adrien Ghosn</span>
+            </a>
+          </li>
+          <li>
+            <a class="team-link" href="https://haddadi.github.io/about/" target="_blank" rel="noopener noreferrer">
+              <img class="member-photo" src="assets/images/team/hamed-haddadi.png" alt="Hamed Haddadi" />
+              <span>Hamed Haddadi</span>
+            </a>
+          </li>
+          <li>
+            <a class="team-link" href="https://marioskogias.github.io/" target="_blank" rel="noopener noreferrer">
+              <img class="member-photo" src="assets/images/team/marios-kogias.png" alt="Marios Kogias" />
+              <span>Marios Kogias</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <hr />
+
+      <section class="sponsor-footer" aria-label="Sponsor">
+        <h3>Sponsor</h3>
+        <a href="https://www.aisi.gov.uk/" target="_blank" rel="noopener noreferrer" aria-label="AISI website">
+          <img src="https://cdn.prod.website-files.com/663bd486c5e4c81588db7a1d/663bd707781f664f2b1fc511_9f6492186d20b0648bbb07a28a20df4d_AISI%20Logo%20Dark.svg" alt="AISI logo" />
+        </a>
+      </section>
+    </section>
+  </main>
+</body>
+</html>
